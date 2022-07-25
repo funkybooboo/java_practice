@@ -10,7 +10,7 @@ public class Main {
     // D = door
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        File file = new File("/Users/nathanstott/IdeaProjects/monsterGame/High Scores");
+        File file = new File("monsterGame/High Scores");
         boolean overAllDone = false;
         do {
             boolean playerWon;
@@ -130,7 +130,7 @@ public class Main {
                     break;
                 }
             }
-            new FileWriter("/Users/nathanstott/IdeaProjects/monsterGame/High Scores", false).close();
+            new FileWriter("monsterGame/High Scores", false).close();
             quicksort(scores);
             Collections.reverse(scores);
             for (int data : scores) {
