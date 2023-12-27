@@ -3,42 +3,33 @@ import java.util.Scanner;
 public class theBinomaryCardTrick {
     public static void main(String[] args) {
         System.out.println("Pick a number (1-63) and keep it in your head");
-        System.out.print("Enter when you're ready: ");
+        System.out.print("Hit enter when ready: ");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
         int guess = 0;
         System.out.println();
         System.out.println("There are six cards");
         printFirstCard();
-        System.out.print("Is your number on this card? [Y/n]: ");
-        String choice = scanner.nextLine();
-        guess += check(choice, 16);
+        guess += check(scanner, 16);
         printSecondCard();
-        System.out.print("Is your number on this card? [Y/n]: ");
-        choice = scanner.nextLine();
-        guess += check(choice, 4);
+        guess += check(scanner, 4);
         printThirdCard();
-        System.out.print("Is your number on this card? [Y/n]: ");
-        choice = scanner.nextLine();
-        guess += check(choice, 8);
+        guess += check(scanner, 8);
         printFourthCard();
-        System.out.print("Is your number on this card? [Y/n]: ");
-        choice = scanner.nextLine();
-        guess += check(choice, 1);
+        guess += check(scanner, 1);
         printFifthCard();
-        System.out.print("Is your number on this card? [Y/n]: ");
-        choice = scanner.nextLine();
-        guess += check(choice, 2);
+        guess += check(scanner, 2);
         printSixthCard();
-        System.out.print("Is your number on this card? [Y/n]: ");
-        choice = scanner.nextLine();
-        guess += check(choice, 32);
+        guess += check(scanner, 32);
         System.out.println();
         System.out.println("Your number is: " + guess);
     }
 
-    private static int check(String input, int value) {
-        if (input.equalsIgnoreCase("y") || input.isEmpty()){
+    private static int check(Scanner scanner, int value) {
+        System.out.println();
+        System.out.print("Is your number on this card? [Y/n]: ");
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("y") || choice.isEmpty()){
             System.out.println("y");
             return value;
         }
@@ -46,7 +37,7 @@ public class theBinomaryCardTrick {
         return 0;
     }
 
-    private static void printFirstCard(){
+    private static void printFirstCard() {
         System.out.println();
         System.out.println("Card 1");
         System.out.println("16 17 18 19 20 21 22 23");
@@ -55,7 +46,7 @@ public class theBinomaryCardTrick {
         System.out.println("56 57 58 59 60 61 62 63");
     }
 
-    private static void printSecondCard(){
+    private static void printSecondCard() {
         System.out.println();
         System.out.println("Card 2");
         System.out.println("4 5 6 7 12 13 14 15");
@@ -64,7 +55,7 @@ public class theBinomaryCardTrick {
         System.out.println("52 53 54 55 60 61 62 63");
     }
 
-    private static void printThirdCard(){
+    private static void printThirdCard() {
         System.out.println();
         System.out.println("Card 3");
         System.out.println("8 9 10 11 12 13 14 15");
@@ -73,7 +64,7 @@ public class theBinomaryCardTrick {
         System.out.println("56 57 58 59 60 61 62 63");
     }
 
-    private static void printFourthCard(){
+    private static void printFourthCard() {
         System.out.println();
         System.out.println("Card 4");
         System.out.println("1 3 5 7 9 11 13 15");
@@ -82,7 +73,7 @@ public class theBinomaryCardTrick {
         System.out.println("49 51 53 55 57 59 61 63");
     }
 
-    private static void printFifthCard(){
+    private static void printFifthCard() {
         System.out.println();
         System.out.println("Card 5");
         System.out.println("2 3 6 7 10 11 14 15");
@@ -91,7 +82,7 @@ public class theBinomaryCardTrick {
         System.out.println("50 51 54 55 58 59 62 63");
     }
 
-    private static void printSixthCard(){
+    private static void printSixthCard() {
         System.out.println();
         System.out.println("Card 6");
         System.out.println("32 33 34 35 36 37 38 39");
