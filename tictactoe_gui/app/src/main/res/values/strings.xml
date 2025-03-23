@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="TICTACTOE">Tic Tac Toe</string>
+    <string name="COMPUTER">AI</string>
+    <string name="PVP">PVP</string>
+    <string name="STATS">Stats</string>
+    <string name="player2_name">Player2 name</string>
+    <string name="player1_name">Player1 name</string>
+    <string name="player2">Player2</string>
+    <string name="player1">Player1</string>
+</resources>

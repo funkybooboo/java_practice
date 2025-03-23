@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MaterialCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/cardViewDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="date"
+            android:textColor="#000000"
+            tools:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cardVeiwPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="players"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cardVeiwWhoWon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="winner"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
