@@ -1,4 +1,4 @@
-# theBinomaryCardTrick
+# Binomary Card Trick
 Magic before your eyes
 
 ## License
