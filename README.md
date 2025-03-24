@@ -1,4 +1,4 @@
-# Project Title
+# Java Practice
 
 
 ## License
