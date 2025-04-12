@@ -1,4 +1,4 @@
-package com.funkybooboo.store;
+package com.funkybooboo.store.Notification;
 
 public interface NotificationService {
     void send(String message);

@@ -1,4 +1,4 @@
-package com.funkybooboo.store;
+package com.funkybooboo.store.Order;
 
 import org.springframework.beans.factory.annotation.Value;
 
