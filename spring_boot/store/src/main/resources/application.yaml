@@ -17,3 +17,7 @@ payment:
     enabled: true
     timeout: 1000
     supported-currencies: USD,EUR,GBP
+
+email:
+  host: https://smtp.gmail.com
+  port: 5761

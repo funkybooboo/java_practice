@@ -1,12 +1,13 @@
 package com.funkybooboo.store;
 
 import com.funkybooboo.store.Notification.EmailNotificationService;
-import com.funkybooboo.store.Notification.NotificationManager;
 import com.funkybooboo.store.Notification.NotificationService;
 import com.funkybooboo.store.Order.OrderService;
 import com.funkybooboo.store.Order.PayPalPaymentService;
 import com.funkybooboo.store.Order.PaymentService;
 import com.funkybooboo.store.Order.StripePaymentService;
+import com.funkybooboo.store.User.InMemoryUserRepository;
+import com.funkybooboo.store.User.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,7 +43,7 @@ public class AppConfig {
     }
 
     @Bean
-    public NotificationManager notificationManager() {
-        return new NotificationManager(notificationService());
+    public UserRepository userRepository() {
+        return new InMemoryUserRepository();
     }
 }

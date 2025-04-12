@@ -1,7 +1,9 @@
 package com.funkybooboo.store;
 
-import com.funkybooboo.store.Notification.NotificationManager;
+import com.funkybooboo.store.Notification.NotificationService;
 import com.funkybooboo.store.Order.OrderService;
+import com.funkybooboo.store.User.User;
+import com.funkybooboo.store.User.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,8 +16,8 @@ public class StoreApplication {
         var orderService = context.getBean(OrderService.class);
         orderService.placeOrder();
 
-        var notificationManager = context.getBean(NotificationManager.class);
-        notificationManager.sendNotification("Order Placed");
+        var userService = context.getBean(UserService.class);
+        userService.registerUser(new User(1L, "hello@me.com", "asdfaf", "Tom"));
 
         context.close();
     }
