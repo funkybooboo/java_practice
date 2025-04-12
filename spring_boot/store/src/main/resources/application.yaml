@@ -5,8 +5,15 @@ spring:
 server:
   port: 8080
 
-stripe:
-  apiUrl: https://api.stripe.com
-  enabled: true
-  timeout: 1000
-  supported-currencies: USD,EUR,GBP
+payment:
+  gateway: stripe
+  stripe:
+    apiUrl: https://api.stripe.com
+    enabled: true
+    timeout: 1000
+    supported-currencies: USD,EUR,GBP
+  paypal:
+    apiUrl: https://api.paypal.com
+    enabled: true
+    timeout: 1000
+    supported-currencies: USD,EUR,GBP
