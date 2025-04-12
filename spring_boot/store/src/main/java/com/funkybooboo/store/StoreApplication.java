@@ -1,15 +1,18 @@
 package com.funkybooboo.store;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class StoreApplication {
-
     public static void main(String[] args) {
-        // SpringApplication.run(StoreApplication.class, args);
-        var orderService = new OrderService(new PayPalPaymentService());
-        orderService.placeOrder();
-    }
+        ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
 
+        var orderService = context.getBean(OrderService.class);
+        orderService.placeOrder();
+
+        var notificationManager = context.getBean(NotificationManager.class);
+        notificationManager.sendNotification("Order Placed");
+    }
 }
