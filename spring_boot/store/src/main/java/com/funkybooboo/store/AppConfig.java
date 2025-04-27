@@ -8,6 +8,7 @@ import com.funkybooboo.store.Order.PaymentService;
 import com.funkybooboo.store.Order.StripePaymentService;
 import com.funkybooboo.store.User.InMemoryUserRepository;
 import com.funkybooboo.store.User.UserRepository;
+import com.funkybooboo.store.User.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,5 +46,10 @@ public class AppConfig {
     @Bean
     public UserRepository userRepository() {
         return new InMemoryUserRepository();
+    }
+
+    @Bean
+    public UserService userService() {
+        return new UserService(userRepository(), notificationService());
     }
 }
