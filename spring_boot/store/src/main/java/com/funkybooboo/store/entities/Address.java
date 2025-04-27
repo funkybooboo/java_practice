@@ -3,8 +3,10 @@ package com.funkybooboo.store.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Setter
 @Getter
 @Entity
@@ -22,8 +24,13 @@ public class Address {
     private String city;
 
     @Column(name = "zip")
-    private LocalDate zip;
+    private String zip;
 
     @Column(name = "state")
-    private Integer state;
+    private String state;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private User user;
 }

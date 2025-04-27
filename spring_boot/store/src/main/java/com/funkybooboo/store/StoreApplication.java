@@ -1,5 +1,6 @@
 package com.funkybooboo.store;
 
+import com.funkybooboo.store.entities.Address;
 import com.funkybooboo.store.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,14 +12,14 @@ public class StoreApplication {
 //        ConfigurableApplicationContext context = SpringApplication.run(StoreApplication.class, args);
 //        
 //        context.close();
+
+        var user = User.builder().name("name").email("email").password("password").build();
         
-        var user1 = new User();
-        user1.setName("name");
-        user1.setEmail("email");
-        user1.setPassword("password");
+        var address = Address.builder().street("street").city("city").state("state").zip("zip").build();
+        
+        user.addAddress(address);
 
-        var user2 = new User(1L, "name", "email", "password");
-
-        var user3 = User.builder().name("name").email("email").password("password").build();
+        System.out.println(user);
+        System.out.println(address);
     }
 }
