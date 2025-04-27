@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: store
+  datasource:
+    url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
+    username: root
+    password: root
+
+server:
+  port: 8080
+
+payment:
+  gateway: stripe
+  stripe:
+    apiUrl: https://api.stripe.com
+    enabled: true
+    timeout: 1000
+    supported-currencies: USD,EUR,GBP
+  paypal:
+    apiUrl: https://api.paypal.com
+    enabled: true
+    timeout: 1000
+    supported-currencies: USD,EUR,GBP
+
+email:
+  host: https://smtp.gmail.com
+  port: 5761
