@@ -1,6 +1,7 @@
 package com.funkybooboo.store;
 
 import com.funkybooboo.store.entities.Address;
+import com.funkybooboo.store.entities.Tag;
 import com.funkybooboo.store.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,11 +16,8 @@ public class StoreApplication {
 
         var user = User.builder().name("name").email("email").password("password").build();
         
-        var address = Address.builder().street("street").city("city").state("state").zip("zip").build();
-        
-        user.addAddress(address);
+        user.addTag(new Tag("tag1"));
 
         System.out.println(user);
-        System.out.println(address);
     }
 }

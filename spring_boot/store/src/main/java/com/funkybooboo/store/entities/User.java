@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -32,6 +34,15 @@ public class User {
     @OneToMany(mappedBy = "user")
     @Builder.Default
     private List<Address> addresses = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_tags",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    @Builder.Default
+    private Set<Tag> tags = new HashSet<>();
     
     public void addAddress(Address address) {
         addresses.add(address);
@@ -41,5 +52,15 @@ public class User {
     public void removeAddress(Address address) {
         addresses.remove(address);
         address.setUser(null);
+    }
+    
+    public void addTag(Tag tag) {
+        this.getTags().add(tag);
+        tag.getUsers().add(this);
+    }
+
+    public void removeTag(Tag tag) {
+        this.getTags().remove(tag);
+        tag.getUsers().remove(this);
     }
 }
