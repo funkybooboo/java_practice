@@ -1,6 +1,7 @@
 package com.funkybooboo.store;
 
 import com.funkybooboo.store.entities.Address;
+import com.funkybooboo.store.entities.Profile;
 import com.funkybooboo.store.entities.Tag;
 import com.funkybooboo.store.entities.User;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,9 @@ public class StoreApplication {
 
         var user = User.builder().name("name").email("email").password("password").build();
         
-        user.addTag(new Tag("tag1"));
+        var profile = Profile.builder().bio("bio").build();
+        
+        user.addProfile(profile);
 
         System.out.println(user);
     }
