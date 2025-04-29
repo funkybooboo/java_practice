@@ -1,16 +1,13 @@
 package com.funkybooboo.store.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Setter
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Builder
+@Setter
 @Entity
 @Table(name = "products")
 public class Product {
@@ -27,6 +24,5 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @ToString.Exclude
     private Category category;
 }
