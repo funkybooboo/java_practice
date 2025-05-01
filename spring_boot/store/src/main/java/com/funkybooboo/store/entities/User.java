@@ -31,7 +31,7 @@ public class User {
     @Column(name = "password")
     private String password;
     
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @Builder.Default
     @ToString.Exclude
     private List<Address> addresses = new ArrayList<>();
@@ -46,7 +46,7 @@ public class User {
     @ToString.Exclude
     private Set<Tag> tags = new HashSet<>();
     
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
     
     @ManyToMany
@@ -86,5 +86,9 @@ public class User {
     public void removeProfile(Profile profile) {
         this.setProfile(null);
         profile.setUser(null);
+    }
+
+    public void addWishlist(Product product) {
+        wishlist.add(product);
     }
 }
