@@ -1,7 +1,10 @@
 package com.funkybooboo.store.repositories;
 
 import com.funkybooboo.store.entities.Product;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -44,4 +47,17 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findTop5ByNameOrderByPrice(String name);
     List<Product> findFirst5ByNameLikeOrderByPrice(String name);
     
+    // Find products whose price are in a given range and sort by name
+    List<Product> findByPriceBetweenOrderByName(BigDecimal min, BigDecimal max);
+    @Query(value = "select * from products p where p.price between :min and :max order by p.name", nativeQuery = true)
+    List<Product> findProductsSql(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
+    @Query("select p from Product p where p.price between :min and :max order by p.name")
+    List<Product> findProductsJPQL(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
+    
+    @Query("select count(*) from Product p where p.price between :min and :max")
+    long countProducts(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
+    
+    @Modifying
+    @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
+    void updatePriceByCategory(@Param("newPrice") BigDecimal newPrice, @Param("categoryId") Byte categoryId); // must wrap in a method with @Transactional
 }
