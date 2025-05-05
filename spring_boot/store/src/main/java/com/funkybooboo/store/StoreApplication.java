@@ -17,7 +17,8 @@ public class StoreApplication {
 //        service.fetchAddress();
 //        service.persistRelated();
 //        service.deleteRelated();
-        service.managingProducts();
+//        service.managingProducts();
+        service.fetchProducts();
         context.close();
     }
 }

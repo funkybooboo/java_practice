@@ -1,6 +1,9 @@
 package com.funkybooboo.store.repositories;
 
+import com.funkybooboo.store.projections.ProductSummary;
+import com.funkybooboo.store.entities.Category;
 import com.funkybooboo.store.entities.Product;
+import com.funkybooboo.store.projections.ProductSummaryDTO;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -10,7 +13,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
-    // Derived Query Methods
     
     // String
     List<Product> findByName(String name);
@@ -23,7 +25,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findByNameStartsWith(String name);
     List<Product> findByNameEndsWith(String name);
     
-    // Numbers
     List<Product> findByPrice(BigDecimal price);
     // select * from products where price = ?
     List<Product> findByPriceGreaterThan(BigDecimal price);
@@ -32,12 +33,9 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findByPriceLessThanEqual(BigDecimal price);
     List<Product> findByPriceBetween(BigDecimal min, BigDecimal max);
 
-    // Null
-    List<Product> findByDescriptionNull(String description);
-    List<Product> findByDescriptionNotNull(String description);
+    List<Product> findByDescription(String description);
 
-    // Multiple conditions
-    List<Product> findByDescriptionAndNullAndNameNull(String description, String name);
+    List<Product> findByDescriptionAndName(String description, String name);
     
     // Sort (OrderBy)
     List<Product> findByNameOrderByNameAsc(String name);
@@ -60,4 +58,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Modifying
     @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
     void updatePriceByCategory(@Param("newPrice") BigDecimal newPrice, @Param("categoryId") Byte categoryId); // must wrap in a method with @Transactional
+    
+    @Query("select new com.funkybooboo.store.projections.ProductSummaryDTO(p.id, p.name) from Product p where p.category = ?1")
+    List<ProductSummaryDTO> findByCategory(Category category);
 }
