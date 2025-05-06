@@ -19,7 +19,7 @@ public class StoreApplication {
 //        service.deleteRelated();
 //        service.managingProducts();
 //        service.fetchProducts();
-        service.fetchUser();
+        service.fetchUsers();
         context.close();
     }
 }
