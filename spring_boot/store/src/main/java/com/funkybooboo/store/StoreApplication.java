@@ -12,14 +12,8 @@ public class StoreApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         var service = context.getBean(UserService.class);
-//        service.showEntityStates();
-//        service.showRelatedEntities();
-//        service.fetchAddress();
-//        service.persistRelated();
-//        service.deleteRelated();
-//        service.managingProducts();
-//        service.fetchProducts();
-        service.fetchUsers();
+
+        service.printLoyalProfiles();
         context.close();
     }
 }

@@ -6,6 +6,7 @@ import com.funkybooboo.store.entities.Product;
 import com.funkybooboo.store.projections.ProductSummaryDTO;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -44,6 +45,9 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     // Limit (Top/First)
     List<Product> findTop5ByNameOrderByPrice(String name);
     List<Product> findFirst5ByNameLikeOrderByPrice(String name);
+    
+    @Procedure("findProductsByPrice")
+    List<Product> findProducts(BigDecimal min, BigDecimal max);
     
     // Find products whose price are in a given range and sort by name
     List<Product> findByPriceBetweenOrderByName(BigDecimal min, BigDecimal max);
