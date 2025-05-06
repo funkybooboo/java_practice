@@ -13,7 +13,7 @@ public class StoreApplication {
         ConfigurableApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         var service = context.getBean(UserService.class);
 
-        service.fetchProductsBySpecifications("prod", null, null);
+        service.fetchPaginatedProducts(0, 10);
         context.close();
     }
 }
