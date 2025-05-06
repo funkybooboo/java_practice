@@ -36,7 +36,7 @@ public class User {
     @ToString.Exclude
     private List<Address> addresses = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_tags",
         joinColumns = @JoinColumn(name = "user_id"),
